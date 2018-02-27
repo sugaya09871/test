@@ -1,0 +1,130 @@
+extends _partial/_layout
+
+block vars
+
+    - var title       = 'テストサイト'
+    - var description = 'test'
+    - var keywords    = 'test'
+    - var ogtype      = 'og:タイプ'
+    - var ogurl       = 'og:url'
+    - var ogimage     = 'og:イメージ'
+    - var ogtitle     = 'og:タイトル'
+    - var ogsite_name = 'og:サイト名'
+    - var twitter_card = 'twitter:サイト名'
+    - var twitter_site = 'twitter:サイト名'
+    - var twitter_title = 'twitter:サイト名'
+    - var twitter_description = 'twitter:サイト名'
+    - var css         = '/css/common.css'
+    - var top    = false
+    - var facebook    = false
+
+block contents
+
+    .main#main
+
+        section.setheight
+            .inner
+                h1 1ページのスクロール
+
+        section.tracking.ScrollPage
+            .inner
+                h1 GAへのトラッキングデータの送信
+                    a(href="#" data-category='カテゴリー1' data-label='ラベル1').js-tracking1 js-tracking1のトラッキングデータを送信する 1
+                    a(href="#" data-category='カテゴリー2' data-label='ラベル2').js-tracking1 js-tracking1のトラッキングデータを送信する 2
+
+                    a(href="#" data-category='カテゴリー3' data-label='ラベル3').js-tracking2 js-tracking2トラッキングデータを送信する 1
+                    a(href="#" data-category='カテゴリー4' data-label='ラベル4').js-tracking2 js-tracking2トラッキングデータを送信する 2
+
+        section.slideshow
+            .inner
+                h1 スライドショー
+                #js-slideShow
+                    .slide_img
+                        ul
+                            li.slide_img_large
+                                figure
+                                    img(src="/img/slide_img1.png")
+                            li.slide_img_large
+                                figure
+                                    img(src="/img/slide_img2.png")
+                            li.slide_img_large
+                                figure
+                                    img(src="/img/slide_img3.png")
+                            li.slide_img_large
+                                figure
+                                    img(src="/img/slide_img4.png")
+                    .slide_thumbnail
+                        ul
+                            li.slide_thumbnail_img.is-active(thumbnail-img="1")
+                                figure
+                                    img(src="/img/slide_thumbnail1.png")
+                            li.slide_thumbnail_img(thumbnail-img="2")
+                                figure
+                                    img(src="/img/slide_thumbnail2.png")
+                            li.slide_thumbnail_img(thumbnail-img="3")
+                                figure
+                                    img(src="/img/slide_thumbnail3.png")
+                            li.slide_thumbnail_img(thumbnail-img="4")
+                                figure
+                                    img(src="/img/slide_thumbnail4.png")
+
+        section.modal
+            .inner
+
+        section.youTube
+            .inner
+
+
+
+
+                .animation_active#animation
+
+
+
+                .panels
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                .panels
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                .panels
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                .panels
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+                    a(href="javascript:void(0)" class="panel")
+                        .panel__content
+
+
+
+
+
+
+                a(href="#animation") ccc
+                p.scrollTop bbb
+
+                #movie2.playerbox
+
+                #movie3.playerbox
+

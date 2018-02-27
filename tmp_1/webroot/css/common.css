@@ -1,0 +1,256 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.is-pc {
+  display: block;
+}
+
+@media only screen and (max-width: 767px) {
+  .is-pc {
+    display: none;
+  }
+}
+
+.is-sp {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .is-sp {
+    display: block;
+  }
+}
+
+/* font face loading
+----------------------------------------------------------- */
+@font-face {
+  font-family: aaa_font;
+  src: url(../fonts/MINI_Serif/mini_serif-bold-web.eot);
+  src: url(../fonts/MINI_Serif/mini_serif-bold-web.eot?#iefix) format("embedded-opentype"), url(../fonts/MINI_Serif/mini_serif-bold-web.woff) format("woff"), url(../fonts/MINI_Serif/mini_serif-bold-web.ttf) format("truetype");
+}
+
+/* optimize modules
+----------------------------------------------------------- */
+header {
+  height: 60px;
+  background-color: #ccc;
+  text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 50px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.catch {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+section {
+  margin-top: 50px;
+}
+
+#main > section {
+  margin-top: 0;
+}
+
+.inner {
+  margin: 0 auto;
+  padding: 30px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.setheight {
+  background-color: aliceblue;
+}
+
+.tracking a {
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  margin-top: 15px;
+}
+
+.animate .animate_list {
+  margin-bottom: 30px;
+}
+
+.animate .animate_list li {
+  margin-bottom: 10px;
+}
+
+.animate .animate_example {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.animate .animate_example .square {
+  border: 2px solid #ccc;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: rotation 2s ease 0s 1 alternate none running;
+          animation: rotation 2s ease 0s 1 alternate none running;
+  background-color: lightgreen;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+@keyframes rotation {
+  from {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+.box2 {
+  background-color: #5a87ff;
+}
+
+.scrollPage {
+  background-color: #ccc;
+}
+
+.scrollTop {
+  display: none;
+  position: fixed;
+  top: 0;
+}
+
+.animation_active {
+  background-color: #5a87ff;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: rotation 1s ease 0s 1 alternate none running;
+          animation: rotation 1s ease 0s 1 alternate none running;
+}
+
+@keyframes rotation {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  35% {
+    -webkit-transform: scale(1.2, 1.2);
+            transform: scale(1.2, 1.2);
+  }
+  70% {
+    -webkit-transform: scale(0.8, 0.8);
+            transform: scale(0.8, 0.8);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@-webkit-keyframes rotation_1 {
+  0% {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+  100% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+@keyframes rotation_1 {
+  0% {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+  100% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+.slideshow_main ul > li {
+  color: red;
+  background-image: url(../images/detail/hero_sp.jpg);
+}
+
+footer {
+  height: 60px;
+  background-color: #ccc;
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "tmp_webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "reset-css": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-pleeease": "^2.0.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "webpack": "^3.4.1",
+    "webpack-stream": "^4.0.0"
+  }
+}

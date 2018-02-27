@@ -1,0 +1,39 @@
+doctype
+html
+    block vars
+    head
+        meta(charset="UTF-8")
+        title #{title}
+        meta(name="description", content=description)
+        meta(name="keywords", content=keywords)
+        meta(property='og:title', content=title)
+        meta(property='og:description', content=description)
+        meta(property='og:type', content=ogtype)
+        meta(property='og:url', content=ogurl)
+        meta(property='og:image', content=ogimage)
+        meta(property='og:site_name', content=ogsite_name)
+        meta(name='twitter:card', content=twitter_card)
+        meta(name='twitter:site', content=twitter_site)
+        meta(name='twitter:title', content=twitter_title)
+        meta(name='twitter:description', content=twitter_description)
+        link(rel="stylesheet", href=css)
+
+        <!--[if lt IE 9]>
+        <script src="../js/lib/html5shiv-printshiv.min.js"></script>
+        <![endif]-->
+
+        if top
+
+        if facebook
+
+    body
+
+        include ../_partial/_header
+
+        block contents
+
+        include ../_partial/_footer
+
+    block script
+        script(src="/js/vendors.bundle.js")
+        script(src="/js/common.bundle.js")

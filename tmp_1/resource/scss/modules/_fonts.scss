@@ -1,0 +1,16 @@
+
+$fontPath: "../fonts";
+
+/* font face loading
+----------------------------------------------------------- */
+
+@font-face{
+  font-family: aaa_font;
+  src:url(#{$fontPath}/MINI_Serif/mini_serif-bold-web.eot);
+  src:url(#{$fontPath}/MINI_Serif/mini_serif-bold-web.eot?#iefix) format('embedded-opentype'),
+  url(#{$fontPath}/MINI_Serif/mini_serif-bold-web.woff) format('woff'),
+  url(#{$fontPath}/MINI_Serif/mini_serif-bold-web.ttf) format('truetype')
+}
+
+/* optimize modules
+----------------------------------------------------------- */

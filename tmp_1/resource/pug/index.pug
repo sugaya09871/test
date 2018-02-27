@@ -1,0 +1,173 @@
+extends _partial/_layout
+
+block vars
+
+    - var title       = 'テストサイト'
+    - var description = 'test'
+    - var keywords    = 'test'
+    - var ogtype      = 'og:タイプ'
+    - var ogurl       = 'og:url'
+    - var ogimage     = 'og:イメージ'
+    - var ogtitle     = 'og:タイトル'
+    - var ogsite_name = 'og:サイト名'
+    - var twitter_card = 'twitter:サイト名'
+    - var twitter_site = 'twitter:サイト名'
+    - var twitter_title = 'twitter:サイト名'
+    - var twitter_description = 'twitter:サイト名'
+    - var css         = '/css/common.css'
+    - var top    = false
+    - var facebook    = false
+
+block contents
+
+    .main#main
+
+        section.setheight
+            .inner
+                h1 テスト
+                h2 1ページ
+
+        section.tracking
+            .inner
+                h2 GAへのトラッキングデータの送信
+                .tracking_list
+                    ul
+                        li
+                            a(href="#" data-category='カテゴリー1' data-label='ラベル1').js-tracking1 js-tracking1のトラッキングデータを送信する 1
+                        li
+                            a(href="#" data-category='カテゴリー2' data-label='ラベル2').js-tracking1 js-tracking1のトラッキングデータを送信する 2
+                        li
+                            a(href="#" data-category='カテゴリー3' data-label='ラベル3').js-tracking2 js-tracking2トラッキングデータを送信する 1
+                        li
+                            a(href="#" data-category='カテゴリー4' data-label='ラベル4').js-tracking2 js-tracking2トラッキングデータを送信する 2
+
+        section.animate
+            .inner
+                h2 css3アニメーション
+                div
+                    h3 ■ アニメーションのショートハンド
+                    p.catch animation: [①] [②] [③] [④] [⑤] [⑥] [⑦] [⑧];
+                    p.catch こんな感じ animation: rotation 2s ease 0s 1 alternate none running;
+                    ul.animate_list
+                        li ① animation-name = アニメーションの名前
+                        li ② animation-duration = アニメーションが始まって終わるまでの時間
+                        li ③ animation-timing-function = アニメーションの進行の度合い
+                        li ④ animation-delay = アニメーションが始まる時間
+                        li ⑤ animation-iteration-count = アニメーションの繰り返し回数
+                        li ⑥ animation-direction = アニメーションの再生方向
+                        li ⑦ animation-fill-mode = アニメーションの開始前、終了後のスタイル
+                        li ⑧ animation-play-state = アニメーションの再生・停止
+                    h3 ■ キーフレーム
+                    p.catch キーフレームはショートハンドで ① と ② を設定すれば動く!
+                    p.catch こんな感じ
+
+
+                div.animate_example
+                    p.codepen(data-height='265', data-theme-id='0', data-slug-hash='EQZeJL', data-default-tab='css,result', data-user='MOkuM', data-embed-version='2', data-pen-title='EQZeJL')
+                        | See the Pen
+                        a(href='https://codepen.io/MOkuM/pen/EQZeJL/') EQZeJL
+                        |  by take (
+                        a(href='https://codepen.io/MOkuM') @MOkuM
+                        | ) on
+                        a(href='https://codepen.io') CodePen
+                        | .
+                        script(async='', src='https://production-assets.codepen.io/assets/embed/ei.js')
+                    p.codepen(data-height='265', data-theme-id='0', data-slug-hash='LQxgEq', data-default-tab='css,result', data-user='MOkuM', data-embed-version='2', data-pen-title='LQxgEq')
+                        | See the Pen
+                        a(href='https://codepen.io/MOkuM/pen/LQxgEq/') LQxgEq
+                        |  by take (
+                        a(href='https://codepen.io/MOkuM') @MOkuM
+                        | ) on
+                        a(href='https://codepen.io') CodePen
+                        | .
+                        script(async='', src='https://production-assets.codepen.io/assets/embed/ei.js')
+                    p.codepen(data-height='265', data-theme-id='0', data-slug-hash='zRNJLp', data-default-tab='css,result', data-user='MOkuM', data-embed-version='2', data-pen-title='zRNJLp')
+                        | See the Pen
+                        a(href='https://codepen.io/MOkuM/pen/zRNJLp/') zRNJLp
+                        |  by take (
+                        a(href='https://codepen.io/MOkuM') @MOkuM
+                        | ) on
+                        a(href='https://codepen.io') CodePen
+                        | .
+                        script(async='', src='https://production-assets.codepen.io/assets/embed/ei.js')
+
+
+        section.slideshow
+            .inner
+                h2 スライドショー
+                    #js-slideShow
+                        .slide_img
+                            ul
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img1.png")
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img2.png")
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img3.png")
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img4.png")
+                        .slide_thumbnail
+                            ul
+                                li.slide_thumbnail_img.is-active(thumbnail-img="1")
+                                    figure
+                                        img(src="/img/slide_thumbnail1.png")
+                                li.slide_thumbnail_img(thumbnail-img="2")
+                                    figure
+                                        img(src="/img/slide_thumbnail2.png")
+                                li.slide_thumbnail_img(thumbnail-img="3")
+                                    figure
+                                        img(src="/img/slide_thumbnail3.png")
+                                li.slide_thumbnail_img(thumbnail-img="4")
+                                    figure
+                                        img(src="/img/slide_thumbnail4.png")
+        section.slideshow
+            .inner
+                h2 スライドショー
+                    #js-slideShow
+                        .slide_img
+                            ul
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img1.png")
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img2.png")
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img3.png")
+                                li.slide_img_large
+                                    figure
+                                        img(src="/img/slide_img4.png")
+                        .slide_thumbnail
+                            ul
+                                li.slide_thumbnail_img.is-active(thumbnail-img="1")
+                                    figure
+                                        img(src="/img/slide_thumbnail1.png")
+                                li.slide_thumbnail_img(thumbnail-img="2")
+                                    figure
+                                        img(src="/img/slide_thumbnail2.png")
+                                li.slide_thumbnail_img(thumbnail-img="3")
+                                    figure
+                                        img(src="/img/slide_thumbnail3.png")
+                                li.slide_thumbnail_img(thumbnail-img="4")
+                                    figure
+                                        img(src="/img/slide_thumbnail4.png")
+
+
+        section.modal
+            .inner
+                h1 モーダル
+
+        section.youTube
+            .inner
+                h1 ユーチューブ
+
+
+
+        a(href="#animation") ccc
+        p.scrollTop トップへ戻る
+

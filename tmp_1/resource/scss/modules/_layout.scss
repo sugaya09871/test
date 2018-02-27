@@ -1,0 +1,164 @@
+$imgPath: "../images";
+$viewport: 640;
+
+// %サイズを出す。
+//@include size(60,w,$viewport);
+//@include size(160,h,$viewport);
+
+// メディアクエリ
+//@include view(sp){
+//}
+//@include view(tablet){
+//}
+
+//フォントサイズ VW
+//@include fs-vw(20,$viewport);
+
+//レティナ対応画像
+//@include imgRetina(logo, png, 100px, 40px);
+
+
+//フォント
+h1{
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+h2{
+  font-size: 24px;
+  margin-bottom: 50px;
+}
+h3{
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.catch{
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+
+//レイアウト
+section{
+  margin-top: 50px;
+}
+#main > section{
+  margin-top: 0;
+}
+.inner {
+  margin: 0 auto;
+  padding: 30px;
+  width: 100%;
+  max-width:1000px;
+}
+
+
+
+.setheight{
+  background-color: aliceblue;
+}
+
+.tracking{
+  a{
+    text-decoration: none;
+    font-size:16px;
+    display: block;
+    margin-top: 15px;
+  }
+}
+
+.animate{
+  .animate_list{
+    margin-bottom: 30px;
+    li{
+      margin-bottom: 10px;
+    }
+  }
+  .animate_example{
+    display: flex;
+    justify-content: space-between;
+    .square{
+      border: 2px solid #ccc;
+      width: 50px;
+      height: 50px;
+      animation: rotation 2s ease 0s 1 alternate none running;
+      background-color: lightgreen;
+    }
+  }
+}
+
+@keyframes rotation {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
+
+
+.slideshow{
+
+}
+
+.box2{
+  background-color: #5a87ff;
+}
+.box3{
+}
+.box4{
+}
+
+
+
+
+
+
+
+
+.scrollPage{
+  background-color: #ccc;
+}
+
+.scrollTop{
+  display: none;
+  position: fixed;
+  top:0;
+}
+
+.animation_active{
+  background-color: rgb(90, 135, 255);
+  width: 50px;
+  height: 50px;
+  animation: rotation 1s ease 0s 1 alternate none running;
+}
+@keyframes rotation {
+  0% {
+    transform: scale(0,0);
+  }
+  35% {
+    transform: scale(1.2,1.2);
+  }
+  70% {
+    transform: scale(0.8,0.8);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes rotation_1 {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.slideshow_main ul > li{
+  color: red;
+  background-image: url(#{$imgPath}/detail/hero_sp.jpg);
+}
+
+

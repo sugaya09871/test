@@ -1,0 +1,25 @@
+$imgPath: "../images";
+$viewport: 640;
+
+// %サイズを出す。
+//@include size(60,w,$viewport);
+//@include size(160,h,$viewport);
+
+// メディアクエリ
+//@include view(sp){
+//}
+//@include view(tablet){
+//}
+
+//フォントサイズ VW
+//@include fs-vw(20,$viewport);
+
+//レティナ対応画像
+//@include imgRetina(logo, png, 100px, 40px);
+
+
+footer{
+  height: 60px;
+  background-color: #ccc;
+  text-align: center;
+}

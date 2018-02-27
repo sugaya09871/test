@@ -1,0 +1,21 @@
+@import "mixin";
+
+%clearfix:after {
+  content:" ";
+  display:block;
+  clear:both;
+}
+
+.is-pc{
+  display: block;
+  @include view(sp){
+    display: none;
+  }
+}
+
+.is-sp{
+  display: none;
+  @include view(sp){
+    display: block;
+  }
+}

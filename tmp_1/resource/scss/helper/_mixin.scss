@@ -1,0 +1,50 @@
+//メディアクエリ
+@mixin view($device) {
+  @if $device == sp {
+    @media only screen and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $device == tablet {
+    @media only screen and (max-width: 1024px) {
+      @content;
+    }
+  }
+ }
+
+//VWの指定
+@function get_vw($size,$viewport){
+  $rate:100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+@mixin fs-vw($font_size:10px,$viewport:320){
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size,$viewport);
+}
+
+//サイズの指定
+@mixin size($value,$dir,$viewport:320){
+  @if $dir == w {
+    width : $value / $viewport * 100%;
+  }@else{
+    height : $value / $viewport * 100%;
+  }
+}
+
+//レティナディスプレイ対応
+@mixin imgRetina($image, $extension, $width, $height) {
+
+  background: url($image + '.' + $extension) no-repeat;
+  width: $width;
+  height: $height;
+
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    background-image: url($image + '-2x' + '.' + $extension) no-repeat;
+    background-size: $width $height;
+  }
+
+}
