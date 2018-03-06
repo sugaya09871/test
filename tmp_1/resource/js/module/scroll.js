@@ -6,30 +6,13 @@ export default class Scroll{
 
   constructor(){
     this.$window = $(window);
-    this.$topBtn = $('.scrollTop');
     this.$ancBtn = $('a[href^="#"]');
     this.Top = 0;
-    this.fadeInValue = 100;
     this.scrollSpeed = 1000;
   }
 
-  fadeInOut(){
-    if ($(window).scrollTop() > this.fadeInValue) {
-      this.$topBtn.fadeIn();
-    } else {
-      this.$topBtn.fadeOut();
-    }
-    this.$window.scroll( ()=>{
-      if ($(window).scrollTop() > this.fadeInValue) {
-        this.$topBtn.fadeIn();
-      } else {
-        this.$topBtn.fadeOut();
-      }
-    });
-  }
-
-  top(){
-    this.$topBtn.click( ()=>{
+  top(className){
+    $(className).click( ()=>{
       anime({
         targets: ['html','body'],
         scrollTop: this.Top,

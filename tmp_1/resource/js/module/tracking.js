@@ -7,16 +7,16 @@ import $ from 'jquery';
 
 export default class tracking{
 
-  constructor(nameClass,action,value){
+  constructor(className,action,value){
     this.category = false;
     this.label = false;
-    this.name = nameClass;
+    this.className = className;
     this.action = action;
     this.value = value;
   }
 
   set(){
-    $(this.name).on('click',()=>{
+    $(this.className).on('click',()=>{
 
       this.category = $(this).attr('data-category');
       this.label = $(this).attr('data-label');

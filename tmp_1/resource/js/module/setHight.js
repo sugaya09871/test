@@ -5,8 +5,9 @@ import $ from 'jquery';
 
 export default class setHeight {
 
-  constructor(breakPoint = false) {
+  constructor(className , breakPoint = false) {
     this.point = breakPoint;
+    this.className = className;
   }
 
 //ヘッダーの高さを取得
@@ -28,25 +29,23 @@ export default class setHeight {
   }
 
 //指定のクラスに高さを指定
-  set(targetClass){
-    this.target = targetClass;
-    $(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+  set(){
+    $(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
   }
 
 //レスポンシブ時
-  responsive(targetClass) {
-    this.target = targetClass;
-    $(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+  responsive() {
+    $(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
   }
 
 //PCだけにしたい場合（ブレイクポイントは任意）
   pcOnly(targetClass){
-    this.target = targetClass;
+    this.className = targetClass;
     if(this.point){
       if(this.point <= this.getWindowWidth()){
-        $(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+        $(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
       }else{
-        $(this.target).css('height','');
+        $(this.className).css('height','');
       }
     }else{
       alert("ブレイクポイントが設定されていません。");
@@ -56,12 +55,12 @@ export default class setHeight {
 
 //SPだけにしたい場合（ブレイクポイントは任意）
   spOnly(targetClass){
-    this.target = targetClass;
+    this.className = targetClass;
     if(this.point) {
       if (this.point >= this.getWindowWidth()) {
-        $(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+        $(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
       } else {
-        $(this.target).css('height', '');
+        $(this.className).css('height', '');
       }
     }else{
       alert("ブレイクポイントが設定されていません。");

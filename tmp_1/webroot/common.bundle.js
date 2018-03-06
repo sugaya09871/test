@@ -9,7 +9,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__module_tracking__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__module_setHight__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__module_onePageScroll__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__module_youtube__ = __webpack_require__(8);
 //モジュールの読み込み
+
 
 
 
@@ -19,25 +21,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const redirect = new __WEBPACK_IMPORTED_MODULE_0__module_redirect__["a" /* default */]('767');
 const tracking1 = new __WEBPACK_IMPORTED_MODULE_1__module_tracking__["a" /* default */]('.js-tracking1', 'click', 'device');
 const tracking2 = new __WEBPACK_IMPORTED_MODULE_1__module_tracking__["a" /* default */]('.js-tracking2', 'click', 'device');
-const setHeight = new __WEBPACK_IMPORTED_MODULE_2__module_setHight__["a" /* default */]('767');
-const onepagescroll = new __WEBPACK_IMPORTED_MODULE_3__module_onePageScroll__["a" /* default */]('.tracking');
+const setHeight = new __WEBPACK_IMPORTED_MODULE_2__module_setHight__["a" /* default */](".setheight", '767');
+const onepagescroll = new __WEBPACK_IMPORTED_MODULE_3__module_onePageScroll__["a" /* default */]('.setheight');
+
+const youtube = new __WEBPACK_IMPORTED_MODULE_4__module_youtube__["a" /* default */]('player1', 'player2', 'player3');
 
 //ロードしたら実行
 window.addEventListener('load', () => {
-  setHeight.set(".setheight");
+  setHeight.set();
   redirect.ua();
   tracking1.set();
   tracking2.set();
+  youtube.set();
 }, false);
 
 //リサイズしたら実行
 window.addEventListener('resize', () => {
-  setHeight.responsive(".setheight");
+  setHeight.responsive();
 }, false);
 
 //スクロールしたら実行
 window.addEventListener('scroll', () => {
-  onepagescroll.responsive();
+  onepagescroll.set();
 }, false);
 
 /***/ }),
@@ -50,7 +55,6 @@ window.addEventListener('scroll', () => {
 
 
 //ブレイクポイントでリダイレクト（その場合ロード時とリサイズ時に発火させる）
-
 //ロード時にユーザーエージェントでリダイレクト
 
 class Redirect {
@@ -152,16 +156,16 @@ class Redirect {
 
 class tracking {
 
-  constructor(nameClass, action, value) {
+  constructor(className, action, value) {
     this.category = false;
     this.label = false;
-    this.name = nameClass;
+    this.className = className;
     this.action = action;
     this.value = value;
   }
 
   set() {
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.name).on('click', () => {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).on('click', () => {
 
       this.category = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('data-category');
       this.label = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('data-label');
@@ -193,8 +197,9 @@ class tracking {
 
 class setHeight {
 
-  constructor(breakPoint = false) {
+  constructor(className, breakPoint = false) {
     this.point = breakPoint;
+    this.className = className;
   }
 
   //ヘッダーの高さを取得
@@ -216,25 +221,23 @@ class setHeight {
   }
 
   //指定のクラスに高さを指定
-  set(targetClass) {
-    this.target = targetClass;
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+  set() {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
   }
 
   //レスポンシブ時
-  responsive(targetClass) {
-    this.target = targetClass;
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+  responsive() {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
   }
 
   //PCだけにしたい場合（ブレイクポイントは任意）
   pcOnly(targetClass) {
-    this.target = targetClass;
+    this.className = targetClass;
     if (this.point) {
       if (this.point <= this.getWindowWidth()) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
       } else {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.target).css('height', '');
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).css('height', '');
       }
     } else {
       alert("ブレイクポイントが設定されていません。");
@@ -244,12 +247,12 @@ class setHeight {
 
   //SPだけにしたい場合（ブレイクポイントは任意）
   spOnly(targetClass) {
-    this.target = targetClass;
+    this.className = targetClass;
     if (this.point) {
       if (this.point >= this.getWindowWidth()) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.target).css('height', this.getWindowHeight() - this.getHeaderHeight());
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).css('height', this.getWindowHeight() - this.getHeaderHeight());
       } else {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.target).css('height', '');
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).css('height', '');
       }
     } else {
       alert("ブレイクポイントが設定されていません。");
@@ -275,13 +278,10 @@ class setHeight {
 
 class onePageScroll {
 
-  constructor(targetClass, breakPoint) {
+  constructor(className, breakPoint) {
     this.border = 0;
-    this.animationFlag = false;
-    this.endAnimation = false;
-    this.target = targetClass;
+    this.className = className;
     this.point = breakPoint;
-    this.contentTop = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(targetClass).offset().top;
   }
 
   //ウィンドウの高さを取得
@@ -302,69 +302,62 @@ class onePageScroll {
     return this.scroll;
   }
 
-  responsive() {
+  //ヘッダーの高さを取得
+  getHeaderHeight() {
+    this.headerHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('header').height();
+    return this.headerHeight;
+  }
 
-    if (this.border < this.getScrollTop() && this.getScrollTop() < this.getWindowHeight() && !this.animationFlag && !this.endAnimation) {
+  //コンテンツの始まりの値を取得
+  getStartContent() {
+    this.contentTop = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).offset().top;
+    return this.contentTop;
+  }
+
+  //コンテンツの高さの値を取得
+  getContentHeight() {
+    this.contentTop = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.className).height();
+    return this.contentTop;
+  }
+
+  set() {
+    console.log('getStartContent' + this.getStartContent());
+    console.log('getScrollTop' + this.getScrollTop());
+    console.log('animationFlag' + this.animationFlag);
+    console.log('endAnimation' + this.endAnimation);
+    console.log('getContentHeight' + this.getContentHeight());
+    console.log('getScrollTop' + this.getScrollTop());
+    console.log('getHeaderHeight' + this.getHeaderHeight());
+
+    if (this.getStartContent() < this.getScrollTop() && !this.animationFlag && !this.endAnimation) {
       this.animationFlag = true;
       __WEBPACK_IMPORTED_MODULE_1_animejs___default()({
         targets: ['html', 'body'],
-        scrollTop: this.contentTop,
+        scrollTop: this.getContentHeight() + this.getHeaderHeight(),
         duration: 600,
         easing: 'easeInQuint',
-        complete: function () {
+        complete: () => {
           this.endAnimation = true;
-          this.border = this.contentTop;
+          this.border = this.getScrollTop();
+          return false;
         }
       });
     };
 
-    if (this.border > this.scroll + 10 && this.animationFlag && this.endAnimation) {
+    if (this.border > this.getScrollTop() && this.animationFlag && this.endAnimation) {
       this.animationFlag = false;
       __WEBPACK_IMPORTED_MODULE_1_animejs___default()({
         targets: ['html', 'body'],
-        scrollTop: 0,
+        scrollTop: this.getStartContent(),
         duration: 600,
         easing: 'easeInQuint',
-        complete: function () {
+        complete: () => {
           this.endAnimation = false;
-          this.border = 10;
+          return false;
         }
       });
     };
   }
-
-  // set(){
-  //
-  //     if (border < this.getScrollTop() && this.getScrollTop() < this.getWindowHeight() && !this.animationFlag && !this.endFlag) {
-  //       this.animationFlag = true;
-  //       anime({
-  //         targets: ['html','body'],
-  //         scrollTop: contentTop,
-  //         duration: 600,
-  //         easing: 'easeInQuint',
-  //         complete: function () {
-  //           this.endFlag = true;
-  //           this.border = this.contentTop;
-  //         }
-  //       });
-  //     };
-  //
-  //     if(this.border > this.scroll + 10 && this.animationFlag && this.endFlag) {
-  //       this.animationFlag = false;
-  //       anime({
-  //         targets: ['html','body'],
-  //         scrollTop: 0,
-  //         duration: 600,
-  //         easing: 'easeInQuint',
-  //         complete: function () {
-  //           this.endFlag = false;
-  //           this.border = 10;
-  //         }
-  //       });
-  //     };
-  //
-  // }
-
 
   //   $('.arrow').click(function () {
   //
@@ -458,6 +451,57 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+class YouTube {
+
+  constructor(...arr) {
+    this.idName = arr;
+    this.idNameNam = this.idName.length;
+  }
+
+  set() {
+
+    let tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    window.onYouTubeIframeAPIReady = () => {
+
+      for (let i = 0; i < this.idNameNam; i++) {
+
+        this.youtubeId = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + this.idName[i]).attr('youtube-id');
+
+        this.idName[i] = new YT.Player(this.idName[i], {
+          videoId: this.youtubeId,
+          playerVars: {
+            controls: 1,
+            showinfo: 1,
+            playsinline: 0,
+            rel: 0,
+            modestbranding: 1
+          }
+          // events: {
+          //   'onStateChange' : onPlayerStateChange,
+          //   'onReady': onPlayerReady
+          // }
+        });
+      }
+    };
+  }
+
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = YouTube;
 
 
 /***/ })

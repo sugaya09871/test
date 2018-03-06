@@ -3,12 +3,9 @@ import anime from 'animejs';
 
 export default class onePageScroll{
 
-  constructor(targetClass, breakPoint){
+  constructor(className, breakPoint){
     this.border = 0;
-    this.ofset = 0;
-    this.animationFlag = false;
-    this.endAnimation = false;
-    this.target = targetClass;
+    this.className = className;
     this.point = breakPoint;
   }
 
@@ -38,35 +35,41 @@ export default class onePageScroll{
 
 //コンテンツの始まりの値を取得
   getStartContent(){
-    this.contentTop = $(this.target).offset().top;
+    this.contentTop = $(this.className).offset().top;
     return this.contentTop;
   }
 
 //コンテンツの高さの値を取得
   getContentHeight(){
-    this.contentTop = $(this.target).height();
+    this.contentTop = $(this.className).height();
     return this.contentTop;
   }
 
-
-  responsive(){
+  set(){
+    console.log('getStartContent' + this.getStartContent());
+    console.log('getScrollTop' + this.getScrollTop());
+    console.log('animationFlag' + this.animationFlag);
+    console.log('endAnimation' + this.endAnimation);
+    console.log('getContentHeight' + this.getContentHeight());
+    console.log('getScrollTop' + this.getScrollTop());
+    console.log('getHeaderHeight' + this.getHeaderHeight());
 
     if (this.getStartContent() < this.getScrollTop() && !this.animationFlag && !this.endAnimation) {
       this.animationFlag = true;
-      this.border = this.getScrollTop();
       anime({
         targets: ['html','body'],
-        scrollTop: this.getContentHeight() + this.border,
+        scrollTop: this.getContentHeight() + this.getHeaderHeight(),
         duration: 600,
         easing: 'easeInQuint',
         complete: () => {
           this.endAnimation = true;
           this.border = this.getScrollTop();
+          return false;
         }
       });
     };
 
-    if(this.border > this.getScrollTop() &&  this.animationFlag && this.endAnimation) {
+    if(this.border > this.getScrollTop() && this.animationFlag && this.endAnimation) {
       this.animationFlag = false;
       anime({
         targets: ['html','body'],
@@ -75,6 +78,7 @@ export default class onePageScroll{
         easing: 'easeInQuint',
         complete: () => {
           this.endAnimation = false;
+          return false;
         }
       });
     };
